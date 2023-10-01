@@ -19,5 +19,5 @@ with open(argv[1]) as file:
     while line != "":
         num = int(line)
         q = factorize(num)
-        print("{}={:.0f}*{}".format(num, num/q, q))
+        print("{}={}*{}".format(num, num//q, q))
         line = file.readline()
