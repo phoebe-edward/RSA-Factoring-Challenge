@@ -16,7 +16,7 @@ def factorize(num):
     half = num//2 + 1
     for i in range(3, half, 2):
         if num % i == 0:
-            if isprime(i):
+            if isprime(i) and isprime(num//i):
                 return i
     return 1
 
