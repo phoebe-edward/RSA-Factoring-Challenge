@@ -3,9 +3,11 @@ from sys import argv
 
 
 def factorize(num):
-    i = 2
+    if num % 2 == 0:
+        return 2
+    i = 3
     while num % i != 0:
-        i += 1
+        i += 2
     return i
 
 
