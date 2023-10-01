@@ -1,33 +1,21 @@
 #!/usr/bin/python3
-def check_factor(my_list):
-    """check factor of number in a list"""
-    import sys
+from sys import argv
 
-    if len(my_list) == 0 or my_list is None:
-        print("An error occured")
-    for q in my_list:
-       i = int(q)
-       for j in range(2, sys.maxsize):
-           if i % j == 0:
-               print("{:d}={:d}*{:d}".format(i, int(i/j), j))
-               break
 
-def factoring_challenge():
-    """factor two numbers"""
-    import sys
+def factorize(num):
+    i = 2
+    while (num % i != 0 and i <= num):
+        i += 1
+    return i
 
-    lis = sys.argv
-    if len(lis) < 2:
-        print("Error!:<USAGE> ./factors filename")
-        exit(98)
-    f_name = ''
-    if len(lis) == 2:
-        f_name = lis[1]
-    if len(lis) == 3:
-        f_name = lis[2]
-    with open(f_name) as file_in:
-        lines = []
-        for line in file_in:
-            lines.append(line)
-    check_factor(lines)
-factoring_challenge()
+
+if len(argv) != 2:
+    print("Usage: ./factors <file>")
+    exit(98)
+with open(argv[1]) as file:
+    line = file.readline()
+    while line != "":
+        num = int(line)
+        q = factorize(num)
+        print("{}={}*{}".format(num, num//q, q))
+        line = file.readline()
