@@ -8,6 +8,8 @@ def factorize(num):
     i = 3
     while num % i != 0:
         i += 2
+        if i > num//2:
+            return 1
     return i
 
 
