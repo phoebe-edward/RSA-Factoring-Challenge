@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+from sys import argv
+
+
+def isprime(num):
+    half = num//2 + 1
+    for i in range(3, half, 2):
+        if num % i == 0:
+            return 0
+    return 1
+
+
+def factorize(num):
+    if num % 2 == 0:
+        return 2
+    half = num//2 + 1
+    for i in range(3, half, 2):
+        if num % i == 0:
+            if isprime(i):
+                return i
+    return 1
+
+
+if len(argv) != 2:
+    print("Usage: ./factors <file>")
+    exit(98)
+with open(argv[1]) as file:
+    line = file.readline()
+    if line != "":
+        num = int(line)
+        q = factorize(num)
+        print("{}={}*{}".format(num, num//q, q))
