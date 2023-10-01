@@ -3,6 +3,8 @@ from sys import argv
 
 
 def isprime(num):
+    if num % 2 == 0:
+        return 0
     half = num//2 + 1
     for i in range(3, half, 2):
         if num % i == 0:
